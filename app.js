@@ -26,10 +26,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB", {
+// mongoose.connect("mongodb://localhost:27017/userDB", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
+
+mongoose.connect("mongodb+srv://admin-alex:" + process.env.MONGO_PASSWORD + "@cluster0.ubjq7.mongodb.net/userDB?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema({
